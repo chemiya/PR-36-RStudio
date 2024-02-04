@@ -1,15 +1,79 @@
 
-#vectores inicio
-revenue <- c(14574.49, 7606.46, 8611.41, 9175.41, 8058.65, 8105.44, 11496.28, 9766.09, 10305.32, 14379.96, 10713.97, 15433.50)
-expenses <- c(12051.82, 5695.07, 12319.20, 12089.72, 8658.57, 840.20, 3285.73, 5821.12, 6976.93, 16618.61, 10054.37, 3803.96)
+#carga de datos
+getwd()
+setwd("C:\\Users\\chema\\Desktop\\formacionPracticar\\r-studio-curso")
+nombres<-c("enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre",
+           "octubre","noviembre","diciembre")
+datos <- read.csv("revenues-expenses.csv",header = FALSE,col.names=nombres)
+head(datos)
+
+
+
+
+
+
+#resumen
+head(datos)
+summary(datos)
+str(datos)
+
+
+
+
+
+
+
+
+
+#separar datos
+revenues <- datos[1, ]
+head(revenues)
+expenses <- datos[2, ]
+head(expenses)
+print(class(revenues))
+
+
+
+
+
+
+
+
+
+#calculos iniciales
+medias_revenues <- rowMeans(revenues)
+mensaje<-paste("La media de los ingresos es:",medias_revenues[1])
+print(mensaje)
+medias_expenses <- rowMeans(expenses)
+mensaje_expenses<-paste("La media de los expenses es:",medias_expenses[1])
+print(mensaje_expenses)
+
+
+
 
 
 
 #beneficios
-profit <- revenue - expenses
+print(class(revenues))
+print(class(expenses))
+profit <- revenues - expenses
+print("beneficios")
 profit
 
-?round()
+
+
+suma_profits <- rowSums(profit)
+mensaje_profits<-paste("La suma de los profits es:",suma_profits[1])
+print(mensaje_profits)
+
+
+
+
+
+
+
+
+
 
 
 #impuestos
@@ -17,80 +81,111 @@ tax <- round(0.30 * profit, 2)
 tax 
 
 
+
+
+
+
+profit.after.tax<-NULL
 #quitando impuestos
-profit.after.tax <- profit - tax
+for (i in seq_along(profit)) {
+  #si el beneficio es negativo, los impuestos tambien son negativos y se suman.
+  if(profit[i]<0){
+    profit.after.tax[i]=profit[i]+tax[i]
+  }else{
+    profit.after.tax[i]=profit[i]-tax[i]
+  }
+}
 profit.after.tax
 
 
+#conversion
+print(class(profit.after.tax))
+profit.after.tax<-as.data.frame(profit.after.tax)
+print(class(profit.after.tax))
+names(profit.after.tax)<-nombres
+profit.after.tax
+
+
+
+
+print(class(profit))
+print(class(profit.after.tax))
+print("Comparacion")
+comparacion<-rbind(profit, profit.after.tax)
+print(comparacion)
+
+
+
+
+suma_profits_after <- rowSums(profit.after.tax)
+mensaje_profits_after<-paste("La suma de los profits_after_tax es:",suma_profits_after[1])
+print(mensaje_profits_after)
+
+
+
+
+
+
+
 #margen
-profit.margin <- round(profit.after.tax/ revenue, 2) * 100
+profit.margin <- round(profit.after.tax/ revenues, 2) * 100
 profit.margin
+
+
+
+
+
+
 
 
 #beneficios medios
-mean_pat <- mean(profit.after.tax)
-mean_pat
+mean_pat <- round(rowMeans(profit.after.tax),2)
+mensaje_media_after<-paste("La media de los profits_after_tax es:",mean_pat[1])
+print(mensaje_media_after)
 
-
+print(class(profit.after.tax))
 #meses con beneficios superiores a la media
 good.months <- profit.after.tax > mean_pat
-good.months
+cuenta_good<-sum(good.months)
+mensaje_good<-paste("Meses superiores a la media:",cuenta_good[1])
+print(mensaje_good)
+
+
+
+
+
+
+
 
 #meses con beneficios inferiores a la media
 bad.months <- !good.months
-bad.months
+cuenta_bad<-sum(bad.months)
+mensaje_bad<-paste("Meses inferiores a la media:",cuenta_bad[1])
+print(mensaje_bad)
 
 
+
+
+print(class(profit.after.tax))
 #mejor mes
-best.month <- profit.after.tax == max(profit.after.tax)
-best.month
-
-best<-which(best.month)
-best
-best.value<-profit.after.tax[best]
-best.value
+mejor <- names(profit.after.tax)[which.max(profit.after.tax)]
+print(paste("Mejor mes:", mejor))
 
 #peor mes
-worst.month <- profit.after.tax == min(profit.after.tax)
-worst.month
-
-worst<-which(worst.month)
-worst
-worst.value<-profit.after.tax[worst]
-worst.value
-
-
-#redondeos
-revenue.1000 <- round(revenue / 1000, 0)
-expenses.1000 <- round(expenses / 1000, 0)
-profit.1000 <- round(profit / 1000, 0)
-profit.after.tax.1000 <- round(profit.after.tax / 1000, 0)
-
-
-revenue.1000
-expenses.1000
-profit.1000
-profit.after.tax.1000
-profit.margin
-good.months
-bad.months
-best.month
-worst.month
+peor <- names(profit.after.tax)[which.min(profit.after.tax)]
+print(paste("Peor mes:", peor))
 
 
 
-#matriz con todos los datos
-M <- rbind(
-  revenue.1000,
-  expenses.1000,
-  profit.1000,
-  profit.after.tax.1000,
-  profit.margin,
-  good.months,
-  bad.months,
-  best.month,
-  worst.month
-)
 
 
-M
+
+
+
+
+
+
+
+
+
+

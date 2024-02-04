@@ -2,9 +2,12 @@
 
 #Seasons
 Seasons <- c("2005","2006","2007","2008","2009","2010","2011","2012","2013","2014")
-
 #Players
 Players <- c("KobeBryant","JoeJohnson","LeBronJames","CarmeloAnthony","DwightHoward","ChrisBosh","ChrisPaul","KevinDurant","DerrickRose","DwayneWade")
+
+
+
+
 
 #Salaries
 KobeBryant_Salary <- c(15946875,17718750,19490625,21262500,23034375,24806250,25244493,27849149,30453805,23500000)
@@ -19,6 +22,9 @@ DerrickRose_Salary <- c(0,0,0,4822800,5184480,5546160,6993708,16402500,17632688,
 DwayneWade_Salary <- c(3031920,3841443,13041250,14410581,15779912,14200000,15691000,17182000,18673000,15000000)
 
 
+
+
+
 #Creamos matriz con los datos
 Salary <- rbind(KobeBryant_Salary, JoeJohnson_Salary, LeBronJames_Salary, CarmeloAnthony_Salary, DwightHoward_Salary, ChrisBosh_Salary, ChrisPaul_Salary, KevinDurant_Salary, DerrickRose_Salary, DwayneWade_Salary)
 #eliminamos antiguos
@@ -26,6 +32,11 @@ rm(KobeBryant_Salary, JoeJohnson_Salary, CarmeloAnthony_Salary, DwightHoward_Sal
 #ponemos nombre
 colnames(Salary) <- Seasons
 rownames(Salary) <- Players
+
+head(Salary)
+
+
+
 
 
 
@@ -51,6 +62,9 @@ colnames(Games) <- Seasons
 rownames(Games) <- Players
 
 
+head(Games)
+
+
 
 
 #Minutes Played
@@ -71,6 +85,10 @@ MinutesPlayed <- rbind(KobeBryant_MP, JoeJohnson_MP, LeBronJames_MP, CarmeloAnth
 rm(KobeBryant_MP, JoeJohnson_MP, CarmeloAnthony_MP, DwightHoward_MP, ChrisBosh_MP, LeBronJames_MP, ChrisPaul_MP, DerrickRose_MP, DwayneWade_MP, KevinDurant_MP)
 colnames(MinutesPlayed) <- Seasons
 rownames(MinutesPlayed) <- Players
+
+
+
+
 
 
 
@@ -96,6 +114,10 @@ rownames(FieldGoals) <- Players
 
 
 
+
+
+
+
 #Field Goal Attempts
 KobeBryant_FGA <- c(2173,1757,1690,1712,1569,1639,1336,1595,73,713)
 JoeJohnson_FGA <- c(1395,1139,1497,1420,1386,1161,931,1052,1018,1025)
@@ -118,6 +140,9 @@ rownames(FieldGoalAttempts) <- Players
 
 
 
+
+
+
 #Points
 KobeBryant_PTS <- c(2832,2430,2323,2201,1970,2078,1616,2133,83,782)
 JoeJohnson_PTS <- c(1653,1426,1779,1688,1619,1312,1129,1170,1245,1154)
@@ -136,3 +161,6 @@ Points <- rbind(KobeBryant_PTS, JoeJohnson_PTS, LeBronJames_PTS, CarmeloAnthony_
 rm(KobeBryant_PTS, JoeJohnson_PTS, LeBronJames_PTS, CarmeloAnthony_PTS, DwightHoward_PTS, ChrisBosh_PTS, ChrisPaul_PTS, KevinDurant_PTS, DerrickRose_PTS, DwayneWade_PTS)
 colnames(Points) <- Seasons
 rownames(Points) <- Players
+
+
+

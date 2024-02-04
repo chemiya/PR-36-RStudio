@@ -7,28 +7,48 @@ str(util)
 summary(util)
 
 
+
+
+
 #creamos campo
 util$Utilization=1-util$Percent.Idle
 head(util,12)
+
+
+
+
+
+
 
 #convertimos fecha
 util$PosixTime<-as.POSIXct(util$Timestamp,format="%d/%m/%Y %H:%M")
 head(util,12)
 
+
+
+
 #eliminaos columna
 util$Timestamp<-NULL
 head(util,12)
+
+
 
 #reodenamos columnas
 util<-util[,c(4,1,2,3)]
 head(util,12)
 
 
+
+
 #filtramos filas
 RL1<-util[util$Machine=="RL1",]
 RL1
+nrow(RL1)
 RL1$Machine<-factor(RL1$Machine)
 str(RL1)
+
+
+
 
 #unimos camos
 util_stats_RL1<-c(min(RL1$Utilization,na.rm=T),
@@ -37,19 +57,35 @@ util_stats_RL1<-c(min(RL1$Utilization,na.rm=T),
 
 util_stats_RL1
 
+
+
 #contamos filtro
 under_rl1<-length(which(RL1$Utilization<0.90))
+under_rl1
+
+
 
 #unimos en lista
 list_rl1<-list("RL1",under_rl1,util_stats_RL1)
 list_rl1
 
+
+
+
 #ponemos nombres
 names(list_rl1)<-c("Machine","Under_09","Stats")
 list_rl1
 
+
+
+
+
 #otra forma de crearla
 list_rl1<-list(Machine="RL1",Under_09=under_rl1,Stats=util_stats_RL1)
+
+
+
+
 
 
 
@@ -70,16 +106,28 @@ list_rl1[[3]][2]
 #añadir elemento
 list_rl1[4]<-"New information"
 
+
+
+
 #buscar atributo de determinadas filas
 RL1[is.na(RL1$Utilization),"PosixTime"]
 list_rl1$UnknownHours<-RL1[is.na(RL1$Utilization),"PosixTime"]
 
 length(list_rl1$UnknownHours)
 
+
+
+
 #eliminamos elemento
 list_rl1[4]<-NULL
 
 list_rl1[4]
+
+
+
+
+
+
 
 #anadimos elemento
 list_rl1$Data<-RL1
@@ -88,6 +136,12 @@ summary(list_rl1)
 str(list_rl1)
 
 list_rl1[[4]][1]
+
+
+
+
+
+
 
 #accedemos elemento concreto
 list_rl1$UnknownHours[1]
@@ -103,6 +157,14 @@ sublist_rl1[[2]][2]
 sublist_rl1$UnknownHours[2]
 
 
+
+
+
+
+
+
+
+#grafico
 library(ggplot2)
 
 #grafico de lineas separando por maquina

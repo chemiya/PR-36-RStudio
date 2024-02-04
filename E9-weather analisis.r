@@ -16,6 +16,11 @@ head(SanFrancisco)
 
 is.data.frame(Chicago)
 
+names(Chicago)
+str(Chicago)
+
+
+
 #conversion matriz
 Chicago<- as.matrix(Chicago)
 NewYork<- as.matrix(NewYork)
@@ -23,6 +28,8 @@ Houston<- as.matrix(Houston)
 SanFrancisco<- as.matrix(SanFrancisco)
 
 is.matrix(Chicago)
+
+
 
 
 #lista con matrices
@@ -36,11 +43,16 @@ weather[[1]]
 weather$Houston
 
 
+
+
 Chicago
 #valor medio de cada fila
 apply(Chicago,1,mean)
 
 mean(Chicago["DaysWithPrecip",])
+
+
+
 
 #maximo de cada fila
 apply(Chicago,1,max)
@@ -67,6 +79,9 @@ output
 apply(Chicago,1,mean)
 
 
+
+
+
 #trasponer
 t(Chicago)
 newlist<-lapply(weather,t)
@@ -75,6 +90,9 @@ newlist
 
 lapply(weather,rbind,NewRow=1:12)
 ?lapply
+
+
+
 
 #media de cada fila
 rowMeans(Chicago)
@@ -91,6 +109,9 @@ lapply(weather,"[",1,)
 lapply(weather,"[",,3)
 
 
+
+
+
 #lapply con funcion
 lapply(weather,function(x) x[1,])
 lapply(weather,function(x) x[,12])
@@ -98,6 +119,9 @@ lapply(weather,function(x) x[,12])
 lapply(weather,function(z) z[1,]-z[2,])
 
 lapply(weather,function(z) round((z[1,]-z[2,])/z[2,],2))
+
+
+
 
 
 #acceso elemento

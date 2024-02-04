@@ -9,6 +9,10 @@ summary(mov)
 str(mov) 
 names(mov)
 
+
+
+
+#graficos
 library(ggplot2)
 
 
@@ -23,7 +27,7 @@ filt2<- mov$Studio %in% c("Buena Vista Studios","WB","Fox","Universal","Sony","P
 
 #seleccionamos filas filtro
 mov2 <- mov[filt & filt2,]
-
+nrow(mov2)
 
 #grafico
 p <- ggplot(data=mov2, aes(x=Genre, y=Gross...US))
@@ -62,12 +66,16 @@ q<-p+
 
 q
 
+
+
+
 #etiquetas
 q <- q +
   xlab("Genre") + 
   ylab("Gross % US") + 
   ggtitle("Domestic Gross % by Genre") 
 q
+
 
 
 #detalles
