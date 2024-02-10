@@ -12,6 +12,7 @@ head(datos)
 
 
 
+
 #resumen
 head(datos)
 summary(datos)
@@ -53,14 +54,13 @@ print(mensaje_expenses)
 
 
 
+
 #beneficios
 print(class(revenues))
 print(class(expenses))
 profit <- revenues - expenses
 print("beneficios")
 profit
-
-
 
 suma_profits <- rowSums(profit)
 mensaje_profits<-paste("La suma de los profits es:",suma_profits[1])
@@ -98,6 +98,8 @@ for (i in seq_along(profit)) {
 profit.after.tax
 
 
+
+
 #conversion
 print(class(profit.after.tax))
 profit.after.tax<-as.data.frame(profit.after.tax)
@@ -105,21 +107,16 @@ print(class(profit.after.tax))
 names(profit.after.tax)<-nombres
 profit.after.tax
 
-
-
-
 print(class(profit))
 print(class(profit.after.tax))
 print("Comparacion")
 comparacion<-rbind(profit, profit.after.tax)
 print(comparacion)
 
-
-
-
 suma_profits_after <- rowSums(profit.after.tax)
 mensaje_profits_after<-paste("La suma de los profits_after_tax es:",suma_profits_after[1])
 print(mensaje_profits_after)
+
 
 
 
@@ -156,15 +153,11 @@ print(mensaje_good)
 
 
 
-
 #meses con beneficios inferiores a la media
 bad.months <- !good.months
 cuenta_bad<-sum(bad.months)
 mensaje_bad<-paste("Meses inferiores a la media:",cuenta_bad[1])
 print(mensaje_bad)
-
-
-
 
 print(class(profit.after.tax))
 #mejor mes

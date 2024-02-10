@@ -10,6 +10,8 @@ summary(util)
 
 
 
+
+
 #creamos campo
 util$Utilization=1-util$Percent.Idle
 head(util,12)
@@ -27,15 +29,21 @@ head(util,12)
 
 
 
+
+
 #eliminaos columna
 util$Timestamp<-NULL
 head(util,12)
 
 
 
+
+
 #reodenamos columnas
 util<-util[,c(4,1,2,3)]
 head(util,12)
+
+
 
 
 
@@ -50,7 +58,9 @@ str(RL1)
 
 
 
-#unimos camos
+
+
+#unimos campos
 util_stats_RL1<-c(min(RL1$Utilization,na.rm=T),
                   mean(RL1$Utilization,na.rm=T),
                   max(RL1$Utilization,na.rm=T))
@@ -59,9 +69,12 @@ util_stats_RL1
 
 
 
+
+
 #contamos filtro
 under_rl1<-length(which(RL1$Utilization<0.90))
 under_rl1
+
 
 
 
@@ -109,11 +122,17 @@ list_rl1[4]<-"New information"
 
 
 
+
+
+
 #buscar atributo de determinadas filas
 RL1[is.na(RL1$Utilization),"PosixTime"]
 list_rl1$UnknownHours<-RL1[is.na(RL1$Utilization),"PosixTime"]
 
 length(list_rl1$UnknownHours)
+
+
+
 
 
 
@@ -129,6 +148,9 @@ list_rl1[4]
 
 
 
+
+
+
 #anadimos elemento
 list_rl1$Data<-RL1
 summary(list_rl1)
@@ -136,6 +158,9 @@ summary(list_rl1)
 str(list_rl1)
 
 list_rl1[[4]][1]
+
+
+
 
 
 

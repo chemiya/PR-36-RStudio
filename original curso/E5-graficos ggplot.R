@@ -11,9 +11,14 @@ head(movies)
 
 
 
+
+
 #nombres columnas
 colnames(movies)<-c("Film","Genre","CriticRating","AudienceRating","BudgetMillions","Year")
 head(movies)
+
+
+
 
 
 
@@ -25,9 +30,14 @@ str(movies)
 
 
 
+
+
 #distribucion
 distribucion <- table(movies$Year)
 print(distribucion)
+
+
+
 
 
 
@@ -40,10 +50,15 @@ head(movies)
 
 
 
+
+
 #analisis dataframe antes graficos
 colnames(movies)
 print(class(movies))
 str(movies)
+
+
+
 
 
 
@@ -56,9 +71,15 @@ ggplot(data=movies,aes(x=CriticRating,y=AudienceRating,colour=Genre,size=BudgetM
 
 
 
+
+
+
 #lineas mas puntos
 p<-ggplot(data=movies,aes(x=CriticRating,y=AudienceRating,colour=Genre,size=BudgetMillions))
 p+geom_line()+geom_point()
+
+
+
 
 
 
@@ -73,8 +94,14 @@ p+geom_point(aes(x=BudgetMillions))+xlab("Budget Millions")
 
 
 
+
+
+
 #lineas
 p+geom_line(size=1)+geom_point()
+
+
+
 
 
 
@@ -88,9 +115,14 @@ p+geom_point(aes(color=Genre,size=BudgetMillions))
 
 
 
+
+
+
 #histograma con 2 dimensiones
 p<-ggplot(data=movies,aes(x=BudgetMillions))
 p+geom_histogram(binwidth=10,aes(fill=Genre),colour="Black")
+
+
 
 
 
@@ -100,9 +132,13 @@ p+geom_density(aes(fill=Genre),position="Stack")
 
 
 
+
+
 #histograma
 p<-ggplot(data=movies,aes(x=AudienceRating))
 p+geom_histogram(binwidth=10,fill="White",colour="Black")
+
+
 
 
 
@@ -110,6 +146,8 @@ p+geom_histogram(binwidth=10,fill="White",colour="Black")
 p<-ggplot(data=movies)
 p+geom_histogram(binwidth=10,aes(x=AudienceRating),fill="White",colour="Red")
 p+geom_histogram(binwidth=10,aes(x=CriticRating),fill="White",colour="Red")
+
+
 
 
 
@@ -126,6 +164,9 @@ p+geom_boxplot(size=1.2)+geom_jitter()
 p+geom_jitter()+geom_boxplot(alpha=0.5)
 
 
+
+
+
 #histogramas separados por atributo
 p<-ggplot(data=movies,aes(x=BudgetMillions))
 p+geom_histogram(binwidth=10,aes(fill=Genre),colour="Black")+facet_grid(Genre~.,scales="free")
@@ -133,9 +174,13 @@ p+geom_histogram(binwidth=10,aes(fill=Genre),colour="Black")+facet_grid(Genre~.,
 
 
 
+
+
 #puntos separados por atributo
 p<-ggplot(data=movies,aes(x=CriticRating,y=AudienceRating,colour=Genre))
 p+geom_point(size=3)+facet_grid(.~Year)
+
+
 
 
 
@@ -147,6 +192,14 @@ p+geom_point(size=3)+facet_grid(Genre~Year)+geom_smooth()
 
 #escalados
 p+geom_point(aes(size=BudgetMillions))+facet_grid(Genre~Year)+geom_smooth()+coord_cartesian(ylim=c(0,50))
+
+
+
+
+
+
+
+
 
 #puntos limitados
 p<-ggplot(data=movies,aes(x=CriticRating,y=AudienceRating,colour=Genre,size=BudgetMillions))

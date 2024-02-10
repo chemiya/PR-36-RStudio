@@ -15,6 +15,9 @@ nrow(data)
 
 
 
+
+
+
 #filtramos
 data1960 <- data[data$Year==1960,]
 data2013 <- data[data$Year==2013,]
@@ -23,6 +26,11 @@ nrow(data1960)
 nrow(data2013) 
 head(data1960) 
 head(data2013) 
+
+
+
+
+
 
 
 
@@ -37,15 +45,18 @@ summary(add1960)
 summary(add2013)
 
 
+
+
+
+
+
+
 #media valores columna
 media_life1960 <- mean(add1960$Life.Exp)
 print(media_life1960)
 
 media_life2013 <- mean(add2013$Life.Exp)
 print(media_life2013)
-
-
-
 
 #fila con mayor valor
 indice_max <- which.max(add2013$Life.Exp)
@@ -54,8 +65,12 @@ print(fila_maxima)
 
 
 
-#unimos
 
+
+
+
+
+#unimos
 head(data1960)
 head(add1960)
 
@@ -67,8 +82,6 @@ head(merged1960)
 str(merged1960)
 str(merged2013)
 
-
-
 #eliminar columnas
 merged1960$Year <- NULL
 merged2013$Year <- NULL
@@ -76,14 +89,15 @@ merged2013$Year <- NULL
 str(merged1960)
 str(merged2013)
 
-
-
-
-
-
 str(merged1960) 
 head(merged1960)
 print(class(merged1960))
+
+
+
+
+
+
 
 
 

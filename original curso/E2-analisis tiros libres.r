@@ -18,6 +18,9 @@ DwayneWade_FT <- c(629,432,354,590,534,494,235,308,189,284)
 
 
 
+
+
+
 #creamos la matriz
 FreeThrows <- rbind(KobeBryant_FT, JoeJohnson_FT, LeBronJames_FT, CarmeloAnthony_FT, DwightHoward_FT, ChrisBosh_FT, ChrisPaul_FT, KevinDurant_FT, DerrickRose_FT, DwayneWade_FT)
 #eliminamos antiguo
@@ -27,6 +30,9 @@ colnames(FreeThrows) <- Seasons
 rownames(FreeThrows) <- Players
 
 FreeThrows
+
+
+
 
 
 
@@ -45,14 +51,14 @@ KevinDurant_FTA <- c(256,256,448,524,840,675,501,750,805,171)
 DerrickRose_FTA <- c(205,205,205,250,338,555,239,512,32,187)
 DwayneWade_FTA <- c(803,535,467,771,702,652,297,425,258,370)
 
-
-
 FreeThrowAttempts <- rbind(KobeBryant_FTA, JoeJohnson_FTA, LeBronJames_FTA, CarmeloAnthony_FTA, DwightHoward_FTA, ChrisBosh_FTA, ChrisPaul_FTA, KevinDurant_FTA, DerrickRose_FTA, DwayneWade_FTA)
 rm(KobeBryant_FTA, JoeJohnson_FTA, CarmeloAnthony_FTA, DwightHoward_FTA, ChrisBosh_FTA, LeBronJames_FTA, ChrisPaul_FTA, DerrickRose_FTA, DwayneWade_FTA, KevinDurant_FTA)
 colnames(FreeThrowAttempts) <- Seasons
 rownames(FreeThrowAttempts) <- Players
 
 FreeThrowAttempts
+
+
 
 
 
@@ -67,12 +73,13 @@ myplot <- function(z, who=1:10) {
          legend=Players[who], col=c(1:4,6), pch=15:18, horiz=F)
 }
 
-
-
 print(class(FreeThrows))
 #traspone la matriz
 FreeThrows
 t(FreeThrows[1:10,,drop=F])
+
+
+
 
 
 
@@ -91,6 +98,9 @@ myplot(FreeThrows/FreeThrowAttempts)
 myplot(FieldGoals/FieldGoalAttempts)
 
 myplot((Points-FreeThrows)/FieldGoals)
+
+
+
 
 
 
